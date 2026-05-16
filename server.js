@@ -3,6 +3,8 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();
 
+const SERVER = process.env.SERVER;
+
 /*
   Dynmap proxy
 */
@@ -10,15 +12,11 @@ const app = express();
 app.use(
   '/map',
   createProxyMiddleware({
-    target: 'http://clasetercerob.falix.gg:8123',
+    target: `http://${SERVER}:8123`,
     changeOrigin: true,
     ws: true
   })
 );
-
-/*
-  Homepage
-*/
 
 app.get('/', (req, res) => {
   res.send('Dynmap proxy online');
