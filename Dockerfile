@@ -5,4 +5,4 @@ COPY plugins /server/plugins
 RUN curl -L https://github.com/playit-cloud/playit-agent/releases/latest/download/playit-linux-amd64 -o /playit
 RUN chmod +x /playit
 
-CMD sh -c "/playit & ./start.sh"
+CMD sh -c "/playit & java -jar /server/server.jar"
